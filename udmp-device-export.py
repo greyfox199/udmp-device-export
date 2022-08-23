@@ -113,6 +113,8 @@ for site in response['data']:
         record["full_duplex"] = ""
         record["media"] = ""
         record["max_speed"] = ""
+        record["upgradable"] = ""
+        record["upgrade_to_firmware"] = ""
 
         if "name" in device:
             record["name"] = device["name"]
@@ -130,7 +132,11 @@ for site in response['data']:
             record["model_in_eol"] = device["model_in_eol"]
         if "adopted" in device:
             record["adopted"] = device["adopted"]
-
+        if "upgradable" in device:
+            record["upgradable"] = device["upgradable"]
+        if "upgrade_to_firmware" in device:
+            record["upgrade_to_firmware"] = device["upgrade_to_firmware"]
+        #need to refactor this part later for accessing a level deeper into the json output
         if "uplink" in device:
             for key, value in device["uplink"].items():
                 if key == "uplink_mac":
@@ -159,9 +165,9 @@ with open(str(config["pathToExportFilesDir"]) + "/udmp-device-export.json", "w")
 #export device data to csv file using path from config file
 with open(str(config["pathToExportFilesDir"]) + "/udmp-device-export.csv", 'w', newline='') as csv_file:
     writer = csv.writer(csv_file)
-    writer.writerow(["site", "name", "id", "model", "mac", "firmware", "LTS", "EOL", "adopted", "uplink_max", "uplink_device_name", "uplink_remote_port", "port_idx", "type", "full_duplex", "media", "max_speed"])
+    writer.writerow(["site", "name", "id", "model", "mac", "firmware", "LTS", "EOL", "adopted", "upgradable", "upgrade_to_firmware", "uplink_mac", "uplink_device_name", "uplink_remote_port", "port_idx", "type", "full_duplex", "media", "max_speed"])
     for item in deviceData:
-        writer.writerow([item["site"], item["name"], item["id"], item["model"], item["mac"], item["version"], item["model_in_lts"], item["model_in_eol"], item["adopted"], item["uplink_mac"], item["uplink_device_name"], item["uplink_remote_port"], item["port_idx"], item["type"], item["full_duplex"], item["media"], item["max_speed"]])
+        writer.writerow([item["site"], item["name"], item["id"], item["model"], item["mac"], item["version"], item["model_in_lts"], item["model_in_eol"], item["adopted"], item["upgradable"], item["upgrade_to_firmware"], item["uplink_mac"], item["uplink_device_name"], item["uplink_remote_port"], item["port_idx"], item["type"], item["full_duplex"], item["media"], item["max_speed"]])
 
 print("JSON file available at " + str(config["pathToExportFilesDir"]) + "/udmp-device-export.json")
 print("CSV file available at " + str(config["pathToExportFilesDir"]) + "/udmp-device-export.csv")

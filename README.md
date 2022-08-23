@@ -57,13 +57,15 @@ the json-formatted file will have a name of udmp-device-export.json in the speci
         "type": "[uplink media type]",
         "full_duplex": [true | false],
         "media": "[media speed]",
-        "max_speed": "[max speed]"
+        "max_speed": "[max speed]",
+        "upgradable": [true | false],
+        "upgrade_to_firmware": "[new firmware version]"
     }
 ]
 ```
 
 The csv file will have a name of udmp-device-export.csv in the specified pathToExportFilesDir config entry.  It willl have the following header structure:
 
-site,name,id,model,mac,firmware,LTS,EOL,adopted,uplink_max,uplink_device_name,uplink_remote_port,port_idx,type,full_duplex,media,max_speed
+site,name,id,model,mac,firmware,LTS,EOL,adopted,uplink_max,uplink_device_name,uplink_remote_port,port_idx,type,full_duplex,media,max_speed,upgradable,new_firmware_version
 
 The values will match what is in the json file listed above.

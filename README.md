@@ -12,7 +12,7 @@ chmod 600 udmp-device-export-config.json
 
 Once the python script and json config file have been created and configured, the script can be run manually as follows:  
 
-python3 msgraph.py -c "/path/to/udmp-device-export-config.json"
+python3 udmp-device-export.py -c "/path/to/udmp-device-export-config.json"
 
 # config file
 The config file is a json-formatted config file.  There are 4 required fields to control functionality:

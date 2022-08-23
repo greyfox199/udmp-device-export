@@ -1,5 +1,6 @@
 # udmp-device-export
-this utility is used to to export devices from a udm pro device via the api
+this utility is used to to export devices from a udm pro device via the api.  It heavily references the api as documented here:
+https://ubntwiki.com/products/software/unifi-controller/api
 
 Requirements:  
 -Assumes a local user has been created on the udm pro device to act as an api user with read access to the network piece.  
